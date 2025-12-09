@@ -20,13 +20,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install Tailwind CLI globally
         run: npm install -g tailwindcss@latest
 
       - name: Build Tailwind CSS
-        run: tailwindcss -i ./src/input.css -o ./dist/style.css --minify
+        run: npx --package tailwindcss tailwindcss -i ./src/input.css -o ./dist/style.css --minify
 
       - name: Copy HTML files
         run: mkdir -p dist && cp -r src/*.html dist/
