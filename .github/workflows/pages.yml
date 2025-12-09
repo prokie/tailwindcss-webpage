@@ -22,11 +22,11 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install Tailwind CLI globally
-        run: npm install -g tailwindcss@latest
+      - name: Install Tailwind CLI
+        run: npm install tailwindcss @tailwindcss/cli
 
       - name: Build Tailwind CSS
-        run: npx --package tailwindcss tailwindcss -i ./src/input.css -o ./dist/style.css --minify
+        run: npx @tailwindcss/cli -i ./src/input.css -o ./dist/style.css --minify
 
       - name: Copy HTML files
         run: mkdir -p dist && cp -r src/*.html dist/
