@@ -1,4 +1,4 @@
-name: Build and Deploy Tailwind to GitHub Pages
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
@@ -22,14 +22,11 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install Tailwind CLI
-        run: npm install tailwindcss @tailwindcss/cli
+      - name: Install dependencies
+        run: npm install
 
-      - name: Build Tailwind CSS
-        run: npx @tailwindcss/cli -i ./src/input.css -o ./dist/style.css --minify
-
-      - name: Copy HTML files
-        run: mkdir -p dist && cp -r src/*.html dist/
+      - name: Build with Vite
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
